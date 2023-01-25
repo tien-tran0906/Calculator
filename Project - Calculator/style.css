@@ -1,0 +1,207 @@
+
+
+
+
+
+body {
+    --accent-color: rgb(211, 236, 229); 
+    --text-color: black; 
+    --button-text-color: black; 
+    --transition-delay: 1s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 7px;
+    overflow: hidden;
+    
+
+    background: linear-gradient(0.25turn, #db3434, #aabe48, #77cf8d, #3b63cf);
+    
+}
+
+body.dark {
+    --accent-color: rgb(205, 159, 215); 
+    background: linear-gradient(0.25turn, #c534db, #3b2163, #142d41, #3b63cf);
+}
+
+.parent-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.theme-toggle-button {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    padding: 1em 1em;
+    border-radius: .6em;
+    border: none;
+    outline: none; 
+    margin-bottom: 4em;
+    transition: var(--transition-delay);
+    transform: scale(1);
+
+    @media screen {
+        
+    }
+}
+
+.theme-toggle-button:hover,
+.theme-toggle-button:focus {
+    transform: scale(1.1) ;
+}
+
+.theme-toggle-button .icon {
+    margin-right: .5em;
+}
+
+.sun-moon-container {
+    --rotation: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    pointer-events: none;
+    top: 100px;
+    transform: rotate(var(--rotation));
+    width: 100px;
+    height: 50px;
+    z-index: 1;
+}
+
+.sun, .moon {
+    position: absolute;
+    transition: opacity var(--transition-delay);
+    padding: 10px;
+}
+
+.sun {
+    top: 1%;
+    opacity: 1;
+    color: rgb(211, 236, 229); 
+}
+
+.dark .sun {
+    opacity: 0;
+}
+
+.moon {
+    bottom: 5%;
+    opacity: 0;
+    color: rgb(241, 188, 239)
+}
+
+.dark .moon {
+    opacity: 1;
+}
+
+
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 50vh;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: minmax(120px, auto) repeat(5,100px);
+    border-radius: 25px;
+    box-shadow: 35px 50px 25px 15px rgba(0,0,0,0.3);
+    position: relative;
+    margin-top: 100px;
+}
+
+
+/* Add round corners */
+.border-equal {
+    border-radius: 0 0 25px;
+}
+.border-period {
+    border-radius: 0 0 0 25px;
+}
+
+
+/* Increase size/ keep round corners when hover over */
+.calculator-grid .border-equal:hover {
+    font-size: 25px;
+    border-radius: 0 0 25px;
+}
+.AC-hover:hover {
+    font-size: 25px;
+    border-radius: 0 0 25px;
+}
+.calculator-grid .border-period:hover {
+    border-radius: 0 0 0 25px;
+}
+
+
+
+
+
+/* This will set the buttons' colors, border and font size*/
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 20px;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* This will change the color of the button to white when hover the cursor over the buttons */
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 50px 50px 50px 50px rgba(0,0,0,0.1);
+    border-radius: 1px;
+    border-color: rgb(195, 195, 195);
+    font-size: 25px;
+    
+}
+
+
+
+/* This will make the AC and = button span to 2 columns instead of one. */
+.span-two {
+    grid-column: span 2;
+}
+
+
+/* This will also help to push the AC and = button into their grid, and make it equals. */
+.output {
+    grid-column: span 4;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px 25px 0 0;
+}
+
+/* This will align the output to the right, in column, being able to break the numbers when it gets too long*/
+.output {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap:break-word;
+    word-break: break-all;
+}
+
+/* This will change how the outputs looks, smaller on top*/
+.output .previous-operand {
+    color:rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color:rgba(255, 255, 255, 0.90);
+    font-size: 2.5rem;
+}
+
+
